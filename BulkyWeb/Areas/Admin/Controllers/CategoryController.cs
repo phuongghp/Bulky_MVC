@@ -4,8 +4,9 @@ using Bulky.DataAccess.Repository.IRepository;
 using Bulky.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BulkyWeb.Controllers
+namespace BulkyWeb.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class CategoryController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -27,11 +28,11 @@ namespace BulkyWeb.Controllers
         {
             if (obj.Name == obj.DisplayOrder.ToString())
             {
-                ModelState.AddModelError("name","Ten va so luong k duoc trung nhau");
+                ModelState.AddModelError("name", "Ten va so luong k duoc trung nhau");
             }
-            if (obj.Name.ToLower()=="test")
+            if (obj.Name.ToLower() == "test")
             {
-                ModelState.AddModelError("","Test is an invalid value");
+                ModelState.AddModelError("", "Test is an invalid value");
             }
             if (ModelState.IsValid)
             {
@@ -41,7 +42,7 @@ namespace BulkyWeb.Controllers
                 return RedirectToAction("Index");
             }
             return View();
-         
+
         }
         public IActionResult Edit(int? id)
         {
@@ -49,7 +50,7 @@ namespace BulkyWeb.Controllers
             {
                 return NotFound();
             }
-            Category? category = _unitOfWork.Category.Get(u=>u.Id==id);
+            Category? category = _unitOfWork.Category.Get(u => u.Id == id);
             if (category == null)
             {
                 return NotFound();
@@ -59,7 +60,7 @@ namespace BulkyWeb.Controllers
         [HttpPost]
         public IActionResult Edit(Category obj)
         {
-           
+
             if (ModelState.IsValid)
             {
                 _unitOfWork.Category.Update(obj);
@@ -84,7 +85,7 @@ namespace BulkyWeb.Controllers
             }
             return View(category);
         }
-        [HttpPost,ActionName("Delete")]
+        [HttpPost, ActionName("Delete")]
         public IActionResult DeletePOST(int? id)
         {
             Category obj = _unitOfWork.Category.Get(u => u.Id == id);
@@ -97,7 +98,7 @@ namespace BulkyWeb.Controllers
             TempData["success"] = "Category deleted successfully";
 
             return RedirectToAction("Index");
-            
+
         }
     }
 }
