@@ -33,7 +33,9 @@ namespace Bulky.DataAccess.Data
                         ListPrice=99,
                         Price=90,
                         Price50=85,
-                        Price100=80
+                        Price100=80,
+                        CategoryId=1,
+                        ImageUrl=""
                     },
                     new Product
                     {
@@ -45,7 +47,9 @@ namespace Bulky.DataAccess.Data
                         ListPrice = 72,
                         Price = 70,
                         Price50 = 65,
-                        Price100 = 60
+                        Price100 = 60,
+                        CategoryId = 2,
+                        ImageUrl = ""
                     },
                     new Product
                     {
@@ -57,7 +61,9 @@ namespace Bulky.DataAccess.Data
                         ListPrice = 30,
                         Price = 27,
                         Price50 = 25,
-                        Price100 = 20
+                        Price100 = 20,
+                        CategoryId = 2,
+                        ImageUrl = ""
                     },
                     new Product
                     {
@@ -69,7 +75,9 @@ namespace Bulky.DataAccess.Data
                         ListPrice = 37,
                         Price = 35,
                         Price50 = 30,
-                        Price100 = 20
+                        Price100 = 20,
+                        CategoryId = 3,
+                        ImageUrl = ""
                     },
                     new Product
                     {
@@ -81,7 +89,9 @@ namespace Bulky.DataAccess.Data
                         ListPrice = 60,
                         Price = 57,
                         Price50 = 55,
-                        Price100 = 50
+                        Price100 = 50,
+                        CategoryId = 1,
+                        ImageUrl = ""
                     },
                     new Product
                     {
@@ -93,7 +103,9 @@ namespace Bulky.DataAccess.Data
                         ListPrice = 30,
                         Price = 27,
                         Price50 = 25,
-                        Price100 = 20
+                        Price100 = 20,
+                        CategoryId = 3,
+                        ImageUrl = ""
                     }
                 );
         }

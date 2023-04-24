@@ -3,6 +3,7 @@ using Bulky.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bulky.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230424023547_addForeignKeyForCategoryProductRelation")]
+    partial class addForeignKeyForCategoryProductRelation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -85,10 +88,6 @@ namespace Bulky.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<double>("ListPrice")
                         .HasColumnType("float");
 
@@ -119,7 +118,6 @@ namespace Bulky.DataAccess.Migrations
                             CategoryId = 1,
                             Description = "Prasent vitae sodales libero ",
                             ISBN = "SORJ111101",
-                            ImageUrl = "",
                             ListPrice = 99.0,
                             Price = 90.0,
                             Price100 = 80.0,
@@ -133,7 +131,6 @@ namespace Bulky.DataAccess.Migrations
                             CategoryId = 2,
                             Description = "Prasent vitae sodales libero ",
                             ISBN = "SORJ111101",
-                            ImageUrl = "",
                             ListPrice = 72.0,
                             Price = 70.0,
                             Price100 = 60.0,
@@ -147,7 +144,6 @@ namespace Bulky.DataAccess.Migrations
                             CategoryId = 2,
                             Description = "Prasent vitae sodales libero ",
                             ISBN = "SORJ111101",
-                            ImageUrl = "",
                             ListPrice = 30.0,
                             Price = 27.0,
                             Price100 = 20.0,
@@ -161,7 +157,6 @@ namespace Bulky.DataAccess.Migrations
                             CategoryId = 3,
                             Description = "Prasent vitae sodales libero ",
                             ISBN = "SORJ111101",
-                            ImageUrl = "",
                             ListPrice = 37.0,
                             Price = 35.0,
                             Price100 = 20.0,
@@ -175,7 +170,6 @@ namespace Bulky.DataAccess.Migrations
                             CategoryId = 1,
                             Description = "Prasent vitae sodales libero ",
                             ISBN = "SORJ111101",
-                            ImageUrl = "",
                             ListPrice = 60.0,
                             Price = 57.0,
                             Price100 = 50.0,
@@ -189,7 +183,6 @@ namespace Bulky.DataAccess.Migrations
                             CategoryId = 3,
                             Description = "Prasent vitae sodales libero ",
                             ISBN = "SORJ111101",
-                            ImageUrl = "",
                             ListPrice = 30.0,
                             Price = 27.0,
                             Price100 = 20.0,
