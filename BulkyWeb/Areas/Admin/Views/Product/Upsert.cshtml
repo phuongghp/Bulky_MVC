@@ -97,7 +97,9 @@
                                 }
                             </div>
                             <div class="col-6 md-3">
-                                <button asp-controller="Product" asp-action="Index" class="btn btn-outline-secondary form-control">Back to list</button>
+                                @*<button asp-controller="Product" asp-action="Index" class="btn btn-outline-secondary form-control">Back to list</button>*@
+                                <a class="btn btn-outline-secondary" asp-area="Admin" asp-controller="Product" asp-action="Index">Back to list</a>
+
                             </div>
                         </div>
                     </div>
