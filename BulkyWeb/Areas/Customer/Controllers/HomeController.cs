@@ -25,7 +25,8 @@ namespace BulkyWeb.Areas.Customer.Controllers
         }
         public IActionResult Details(int productId)
         {
-            Product product = _uniOfWork.Product.Get(u => u.Id == productId, includeProperties: "Category");
+            //Product product = _uniOfWork.Product.GetAll(includeProperties: "Category").Where(u => u.Id == productId).FirstOrDefault();
+            var product = _uniOfWork.Product.Get(s => s.Id == productId, "Category");
             return View(product);
         }
 

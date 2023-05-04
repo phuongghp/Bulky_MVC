@@ -31,7 +31,16 @@ namespace Bulky.DataAccess.Repository
         public T Get(Expression<Func<T, bool>> filter, string? includeProperties = null)
         {
             IQueryable<T> query = dbSet;
-            query=query.Where(filter);
+            query = query.Where(filter);// đoạn này đang lỗi
+            /*if (!string.IsNullOrEmpty(includeProperties))
+            {
+                foreach (var includePop in includeProperties.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(includePop);
+                }
+
+            }*/
+            
             return query.FirstOrDefault();
         }
 
