@@ -8,6 +8,7 @@ using Bulky.DataAccess.Repository.IRepository;
 using Bulky.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Bulky.DataAccess.Repository
 {
@@ -28,19 +29,29 @@ namespace Bulky.DataAccess.Repository
             dbSet.Add(entity);
         }
 
-        public T Get(Expression<Func<T, bool>> filter, string? includeProperties = null)
+        public T Get(Expression<Func<T, bool>> filter, string? includeProperties = null, bool tracked = false)
         {
-            IQueryable<T> query = dbSet;
+            IQueryable<T> query;
+            if (tracked)
+            {
+               query = dbSet;
+                
+            }
+            else
+            {
+                 query = dbSet.AsNoTracking();
+               
+            }
             query = query.Where(filter);// đoạn này đang lỗi
-            /*if (!string.IsNullOrEmpty(includeProperties))
+            if (!string.IsNullOrEmpty(includeProperties))
             {
                 foreach (var includePop in includeProperties.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries))
                 {
                     query = query.Include(includePop);
                 }
 
-            }*/
-            
+            }
+
             return query.FirstOrDefault();
         }
 
