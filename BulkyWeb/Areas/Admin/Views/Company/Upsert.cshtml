@@ -1,0 +1,99 @@
+﻿@model Company
+<div class="card shadow border-0 mt-4">
+    <div class="card-header bg-primary bg-gradient m-lg-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text py-2">@(Model.Id!=0?"Update":"Create") Company</h2>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p4"> 
+        <form method="post" class="row" enctype="multipart/form-data">
+            <input asp-for="Id"hidden />
+            <div class="row">
+                <div class="col-12">
+                    <div class="border p-3">
+                        @*    <div asp-validation-summary="All"></div>*@
+                        <div class="form-floating py-2 col-12">
+                            <label asp-for="Name" class="ms-2"></label>
+                            <input asp-for="Name" class="form-control border-0 shadow" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="form-floating py-2 col-12">
+
+                            <input asp-for="PhoneNumber" class="form-control border-0 shadow" />
+                            <label asp-for="PhoneNumber" class="ms-2"></label>
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+
+                        </div>
+                        <div class="form-floating py-2 col-12">
+
+                            <input asp-for="StreetAddress" class="form-control border-0 shadow" />
+                            <label asp-for="StreetAddress" class="ms-2"></label>
+                            <span asp-validation-for="StreetAddress" class="text-danger"></span>
+
+                        </div>
+                        <div class="form-floating py-2 col-12">
+
+                            <input asp-for="State" class="form-control border-0 shadow" />
+                            <label asp-for="State" class="ms-2"></label>
+                            <span asp-validation-for="State" class="text-danger"></span>
+
+                        </div>
+                        <div class="form-floating py-2 col-12">
+
+                            <input asp-for="City" class="form-control border-0 shadow" />
+                            <label asp-for="City" class="ms-2"></label>
+                            <span asp-validation-for="City" class="text-danger"></span>
+
+                        </div>
+                        
+                        <div class="form-floating py-2 col-12">
+
+                            <input asp-for="PostalCode" class="form-control border-0 shadow" />
+                            <label asp-for="PostalCode" class="ms-2"></label>
+                            <span asp-validation-for="PostalCode" class="text-danger"></span>
+
+                        </div>
+                   
+                        <div class="row">
+                            <div class="col-6 md-3">
+                                @if (Model.Id != 0)
+                                {
+                                    <button type="submit" class="btn btn-primary form-control">Update</button>
+                                }
+                                else
+                                {
+                                    <button type="submit" class="btn btn-primary form-control">Create</button>
+
+                                }
+                            </div>
+                            <div class="col-6 md-3">
+                                @*<button asp-controller="Company" asp-action="Index" class="btn btn-outline-secondary form-control">Back to list</button>*@
+                                <a class="btn btn-outline-secondary" asp-area="Admin" asp-controller="Company" asp-action="Index">Back to list</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+         
+        </form>
+    </div>
+</div>
+
+@*@section Scripts{
+    <script src="https://cdn.tiny.cloud/1/ewb22aqx6kiz3j77ree0eub8ceiep22k52gbak5hffiy3bzl/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+        });
+    </script>
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}*@

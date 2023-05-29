@@ -4,6 +4,7 @@ using Bulky.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bulky.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230512022929_AddOrderHeaderAndOrderDetailToDb")]
+    partial class AddOrderHeaderAndOrderDetailToDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -63,70 +66,6 @@ namespace Bulky.DataAccess.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Bulky.Models.Company", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("City")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PostalCode")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("State")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("StreetAddress")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Companies");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            City = "Ha Noi",
-                            Name = "Tech Solution",
-                            PhoneNumber = "0019283924",
-                            PostalCode = "0019",
-                            State = "Viet Nam",
-                            StreetAddress = "Duy Tan, Cau giay"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            City = "Hai Phong",
-                            Name = "Natural Benefit",
-                            PhoneNumber = "00192242924",
-                            PostalCode = "0239",
-                            State = "Viet Nam",
-                            StreetAddress = "Vinh Yen"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            City = "Ca Mau",
-                            Name = "Lets Get Start",
-                            PhoneNumber = "0192242924",
-                            PostalCode = "8391",
-                            State = "Viet Nam",
-                            StreetAddress = "Can Tho "
-                        });
-                });
-
             modelBuilder.Entity("Bulky.Models.OrderDetail", b =>
                 {
                     b.Property<int>("Id")
@@ -135,7 +74,7 @@ namespace Bulky.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Count")
+                    b.Property<int>("Counte")
                         .HasColumnType("int");
 
                     b.Property<int>("OrderHeaderId")
@@ -206,9 +145,6 @@ namespace Bulky.DataAccess.Migrations
 
                     b.Property<string>("PostalCode")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SessionId")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("ShoppingDate")
